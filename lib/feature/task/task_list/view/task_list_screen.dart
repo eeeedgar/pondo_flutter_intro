@@ -1,37 +1,19 @@
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:pondo_flutter_intro/feature/task/task_list/view/task_list_provider.dart';
 
-final database = FirebaseDatabase.instance.ref();
-final tasksRef = database.child('tasks');
-
-class TaskListScreen extends StatefulWidget {
+class TaskListScreen extends StatelessWidget {
   const TaskListScreen({super.key});
 
   @override
-  State<TaskListScreen> createState() => _TaskListScreenState();
-}
-
-class _TaskListScreenState extends State<TaskListScreen> {
-  List<String> _tasks = [];
-
-  @override
-  void initState() {
-    super.initState();
-
-    tasksRef.onValue.listen((DatabaseEvent event) {
-      final data = Map<dynamic, dynamic>.from(event.snapshot.value as Map);
-      _tasks = data.entries.map((e) => e.value.toString()).toList();
-      setState(() {});
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
+    final tasksProvider = TasksProvider.of(context);
+    final tasks = tasksProvider.tasks;
     return Scaffold(
+      appBar: AppBar(title: const Text('Task list')),
       body: ListView.builder(
-        itemCount: _tasks.length,
+        itemCount: tasks.length,
         itemBuilder: (context, index) => ListTile(
-          title: Text(_tasks[index]),
+          title: Text(tasks[index]),
         ),
       ),
     );

@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:pondo_flutter_intro/feature/auth/data/auth_repository.dart';
 
 class AuthProvider extends StatefulWidget {
   final Widget child;
@@ -21,15 +22,15 @@ class AuthProvider extends StatefulWidget {
 }
 
 class _AuthProviderState extends State<AuthProvider> {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final AuthRepository _authRepository = AuthRepository();
   User? _user;
   late final StreamSubscription<User?> _authSubscription;
 
   @override
   void initState() {
     super.initState();
-    _user = _auth.currentUser;
-    _authSubscription = _auth.authStateChanges().listen((user) {
+    _user = _authRepository.currentUser;
+    _authSubscription = _authRepository.authStateChanges.listen((user) {
       setState(() {
         _user = user;
       });
@@ -38,7 +39,8 @@ class _AuthProviderState extends State<AuthProvider> {
 
   Future<void> signInAnonymously(BuildContext context) async {
     try {
-      await _auth.signInAnonymously();
+      await _authRepository.signInAnonymously();
+      // Обновление _user произойдёт через подписку на authStateChanges
     } on FirebaseAuthException catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text("Error: ${e.message}")),
