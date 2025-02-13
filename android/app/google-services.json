@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "673773802692",
+    "project_id": "pondo-flutter-intro",
+    "storage_bucket": "pondo-flutter-intro.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:673773802692:android:ecd414ee1426dd92ac2591",
+        "android_client_info": {
+          "package_name": "com.eeeedgar.pondoapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNUH7qWghKCnr0WjhD1YQ5aQFHZTUqEg8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:673773802692:android:fb464b22755d0dbfac2591",
+        "android_client_info": {
+          "package_name": "com.eeeedgar.pondointroapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNUH7qWghKCnr0WjhD1YQ5aQFHZTUqEg8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
