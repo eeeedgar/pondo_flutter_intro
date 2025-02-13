@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:pondo_flutter_intro/feature/task/data/task_repository.dart';
+import 'package:pondo_flutter_intro/feature/task/model/task_model.dart';
 
 class TasksProvider extends StatefulWidget {
   final Widget child;
@@ -18,9 +19,9 @@ class TasksProvider extends StatefulWidget {
 }
 
 class _TasksProviderState extends State<TasksProvider> {
-  List<String> tasks = [];
+  List<TaskModel> tasks = [];
   final TasksRepository _tasksRepository = TasksRepository();
-  late final StreamSubscription<List<String>> _subscription;
+  late final StreamSubscription<List<TaskModel>> _subscription;
 
   @override
   void initState() {

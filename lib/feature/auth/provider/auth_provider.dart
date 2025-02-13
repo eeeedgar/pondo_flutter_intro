@@ -23,24 +23,14 @@ class AuthProvider extends StatefulWidget {
 
 class _AuthProviderState extends State<AuthProvider> {
   final AuthRepository _authRepository = AuthRepository();
-  User? _user;
-  late final StreamSubscription<User?> _authSubscription;
+  late final StreamSubscription<bool?> _authSubscription;
+  late bool _isAuthorized;
 
-  @override
-  void initState() {
-    super.initState();
-    _user = _authRepository.currentUser;
-    _authSubscription = _authRepository.authStateChanges.listen((user) {
-      setState(() {
-        _user = user;
-      });
-    });
-  }
+  bool get isAuthorized => _isAuthorized;
 
   Future<void> signInAnonymously(BuildContext context) async {
     try {
       await _authRepository.signInAnonymously();
-      // Обновление _user произойдёт через подписку на authStateChanges
     } on FirebaseAuthException catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text("Error: ${e.message}")),
@@ -48,12 +38,15 @@ class _AuthProviderState extends State<AuthProvider> {
     }
   }
 
-  User? get user => _user;
-
   @override
-  void dispose() {
-    _authSubscription.cancel();
-    super.dispose();
+  void initState() {
+    super.initState();
+    _isAuthorized = _authRepository.isAuthorized;
+    _authSubscription = _authRepository.authStateChanges.listen((isAuthorized) {
+      setState(() {
+        _isAuthorized = isAuthorized;
+      });
+    });
   }
 
   @override
@@ -62,6 +55,12 @@ class _AuthProviderState extends State<AuthProvider> {
       data: this,
       child: widget.child,
     );
+  }
+
+  @override
+  void dispose() {
+    _authSubscription.cancel();
+    super.dispose();
   }
 }
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pondo_flutter_intro/feature/auth/view/auth_provider.dart';
+import 'package:pondo_flutter_intro/feature/auth/provider/auth_provider.dart';
 
 class AuthSignInAnonymousScreen extends StatelessWidget {
   const AuthSignInAnonymousScreen({super.key});
