@@ -14,20 +14,17 @@ class TaskListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: ListTile(
-        leading: Checkbox(
-          value: task.status == TaskCompleteStatus.completed,
-          onChanged: (value) => _onCheckboxChanged(context, value),
-        ),
-        title: Text(task.title),
-        subtitle: Text(task.description ?? ''),
-        trailing: task.status == TaskCompleteStatus.completed ? const Icon(Icons.check) : const Icon(Icons.close),
+      dense: true,
+      title: Text(task.title),
+      subtitle: Text(task.description ?? ''),
+      trailing: Checkbox(
+        value: task.status == TaskCompleteStatus.completed,
+        onChanged: (value) => _onCheckboxChanged(context, value),
       ),
     );
   }
 
   void _onCheckboxChanged(BuildContext context, bool? value) {
-    print('Checkbox changed to: $value');
     TasksProvider.of(context).updateTaskStatus(
       taskId: task.id,
       status: value ?? false ? TaskCompleteStatus.completed : TaskCompleteStatus.pending,

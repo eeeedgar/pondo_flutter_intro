@@ -31,11 +31,12 @@ class TaskListScreen extends StatelessWidget {
         onPressed: () => _onFabPressed(context),
         child: const Icon(Icons.add),
       ),
-      body: ListView.builder(
+      body: ListView.separated(
         itemCount: tasks.length,
         itemBuilder: (context, index) => TaskListTile(
           task: tasks[index],
         ),
+        separatorBuilder: (_, __) => const Divider(),
       ),
     );
   }

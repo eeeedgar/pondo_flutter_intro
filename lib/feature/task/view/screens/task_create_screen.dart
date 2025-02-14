@@ -23,7 +23,6 @@ class _TaskCreateScreenState extends State<TaskCreateScreen> {
           key: _formKey,
           child: Column(
             children: [
-              // Поле для ввода заголовка (обязательное)
               TextFormField(
                 controller: _titleController,
                 decoration: const InputDecoration(

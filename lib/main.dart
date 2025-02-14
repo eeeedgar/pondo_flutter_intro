@@ -37,12 +37,10 @@ class MainApp extends StatefulWidget {
 
 class _MainAppState extends State<MainApp> {
   @override
-  Widget build(BuildContext context) {
-    return AuthorirazionProvider(
-      authRepository: AppDependencies.of(context).authRepository,
-      child: MaterialApp(
-        home: AuthWrapper(),
-      ),
-    );
-  }
+  Widget build(BuildContext context) => AuthorirazionProvider(
+        authRepository: AppDependencies.of(context).authRepository,
+        child: MaterialApp(
+          home: AuthWrapper(),
+        ),
+      );
 }
