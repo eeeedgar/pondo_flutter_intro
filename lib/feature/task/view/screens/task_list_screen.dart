@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pondo_flutter_intro/core/theme/widgets/custom_app_bar.dart';
 import 'package:pondo_flutter_intro/feature/auth/provider/auth_provider.dart';
 import 'package:pondo_flutter_intro/feature/task/provider/task_list_provider.dart';
 import 'package:pondo_flutter_intro/feature/task/view/widgets/task_list_tile.dart';
@@ -10,10 +11,11 @@ class TaskListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final tasksProvider = TasksProvider.of(context);
+
     final tasks = tasksProvider.filteredTasks;
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Task list'),
+      appBar: CustomAppBar(
+        title: 'Task list',
         actions: [
           IconButton(
             icon: Icon(
