@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pondo_flutter_intro/feature/auth/provider/auth_provider.dart';
 import 'package:pondo_flutter_intro/feature/task/provider/task_list_provider.dart';
 import 'package:pondo_flutter_intro/feature/task/view/widgets/task_list_tile.dart';
+import 'package:pondo_flutter_intro/router/routes.dart';
 
 class TaskListScreen extends StatelessWidget {
   const TaskListScreen({super.key});
@@ -39,7 +40,7 @@ class TaskListScreen extends StatelessWidget {
     );
   }
 
-  void _onFabPressed(BuildContext context) => Navigator.of(context).pushNamed('/create');
+  void _onFabPressed(BuildContext context) => Navigator.of(context).pushNamed(Routes.createTask.path);
 
   void _onLogoutPressed(BuildContext context) => AuthorirazionProvider.of(context).logout(context);
 
