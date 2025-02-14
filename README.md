@@ -18,7 +18,7 @@ A simple task management app built with Flutter and Firebase Realtime Database. 
 
 You can download apk from [Releases](https://github.com/eeeedgar/pondo_flutter_intro/releases) or build it by yourself
 
-### 🛠️ Setup and Installation
+### Setup and Installation
 
 #### **1. Clone the repository**
 ```bash
@@ -89,7 +89,7 @@ lib
 
 ### **Running tests**
 
-Tests are running automatically on CI/CD, but you can run them on your own
+Tests are running automatically on CI/CD (you can see them here [Actions](https://github.com/eeeedgar/pondo_flutter_intro/actions)), but you can run them on your own
 ```bash
 flutter test
 ```
