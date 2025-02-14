@@ -1,15 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:pondo_flutter_intro/feature/task/model/task_complete_status.dart';
 
 part 'task_model.freezed.dart';
 part 'task_model.g.dart';
-
-enum CompleteStatus {
-  @JsonValue(0)
-  pending,
-
-  @JsonValue(1)
-  completed,
-}
 
 @freezed
 class TaskModel with _$TaskModel {
@@ -17,7 +10,7 @@ class TaskModel with _$TaskModel {
     required String id,
     required String title,
     String? description,
-    required CompleteStatus status,
+    required TaskCompleteStatus status,
   }) = _TaskModel;
 
   factory TaskModel.fromJson(Map<String, dynamic> json) => _$TaskModelFromJson(json);

@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'task_model.dart';
+part of 'task_create_dto.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,64 +14,55 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-TaskModel _$TaskModelFromJson(Map<String, dynamic> json) {
-  return _TaskModel.fromJson(json);
+TaskCreateDto _$TaskCreateDtoFromJson(Map<String, dynamic> json) {
+  return _TaskCreateDto.fromJson(json);
 }
 
 /// @nodoc
-mixin _$TaskModel {
-  String get id => throw _privateConstructorUsedError;
+mixin _$TaskCreateDto {
   String get title => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
   TaskCompleteStatus get status => throw _privateConstructorUsedError;
 
-  /// Serializes this TaskModel to a JSON map.
+  /// Serializes this TaskCreateDto to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of TaskModel
+  /// Create a copy of TaskCreateDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $TaskModelCopyWith<TaskModel> get copyWith =>
+  $TaskCreateDtoCopyWith<TaskCreateDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $TaskModelCopyWith<$Res> {
-  factory $TaskModelCopyWith(TaskModel value, $Res Function(TaskModel) then) =
-      _$TaskModelCopyWithImpl<$Res, TaskModel>;
+abstract class $TaskCreateDtoCopyWith<$Res> {
+  factory $TaskCreateDtoCopyWith(
+          TaskCreateDto value, $Res Function(TaskCreateDto) then) =
+      _$TaskCreateDtoCopyWithImpl<$Res, TaskCreateDto>;
   @useResult
-  $Res call(
-      {String id,
-      String title,
-      String? description,
-      TaskCompleteStatus status});
+  $Res call({String title, String? description, TaskCompleteStatus status});
 }
 
 /// @nodoc
-class _$TaskModelCopyWithImpl<$Res, $Val extends TaskModel>
-    implements $TaskModelCopyWith<$Res> {
-  _$TaskModelCopyWithImpl(this._value, this._then);
+class _$TaskCreateDtoCopyWithImpl<$Res, $Val extends TaskCreateDto>
+    implements $TaskCreateDtoCopyWith<$Res> {
+  _$TaskCreateDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of TaskModel
+  /// Create a copy of TaskCreateDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
     Object? title = null,
     Object? description = freezed,
     Object? status = null,
   }) {
     return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -89,43 +80,34 @@ class _$TaskModelCopyWithImpl<$Res, $Val extends TaskModel>
 }
 
 /// @nodoc
-abstract class _$$TaskModelImplCopyWith<$Res>
-    implements $TaskModelCopyWith<$Res> {
-  factory _$$TaskModelImplCopyWith(
-          _$TaskModelImpl value, $Res Function(_$TaskModelImpl) then) =
-      __$$TaskModelImplCopyWithImpl<$Res>;
+abstract class _$$TaskCreateDtoImplCopyWith<$Res>
+    implements $TaskCreateDtoCopyWith<$Res> {
+  factory _$$TaskCreateDtoImplCopyWith(
+          _$TaskCreateDtoImpl value, $Res Function(_$TaskCreateDtoImpl) then) =
+      __$$TaskCreateDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String id,
-      String title,
-      String? description,
-      TaskCompleteStatus status});
+  $Res call({String title, String? description, TaskCompleteStatus status});
 }
 
 /// @nodoc
-class __$$TaskModelImplCopyWithImpl<$Res>
-    extends _$TaskModelCopyWithImpl<$Res, _$TaskModelImpl>
-    implements _$$TaskModelImplCopyWith<$Res> {
-  __$$TaskModelImplCopyWithImpl(
-      _$TaskModelImpl _value, $Res Function(_$TaskModelImpl) _then)
+class __$$TaskCreateDtoImplCopyWithImpl<$Res>
+    extends _$TaskCreateDtoCopyWithImpl<$Res, _$TaskCreateDtoImpl>
+    implements _$$TaskCreateDtoImplCopyWith<$Res> {
+  __$$TaskCreateDtoImplCopyWithImpl(
+      _$TaskCreateDtoImpl _value, $Res Function(_$TaskCreateDtoImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of TaskModel
+  /// Create a copy of TaskCreateDto
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
     Object? title = null,
     Object? description = freezed,
     Object? status = null,
   }) {
-    return _then(_$TaskModelImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
+    return _then(_$TaskCreateDtoImpl(
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -144,18 +126,13 @@ class __$$TaskModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$TaskModelImpl implements _TaskModel {
-  const _$TaskModelImpl(
-      {required this.id,
-      required this.title,
-      this.description,
-      required this.status});
+class _$TaskCreateDtoImpl implements _TaskCreateDto {
+  const _$TaskCreateDtoImpl(
+      {required this.title, this.description, required this.status});
 
-  factory _$TaskModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$TaskModelImplFromJson(json);
+  factory _$TaskCreateDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TaskCreateDtoImplFromJson(json);
 
-  @override
-  final String id;
   @override
   final String title;
   @override
@@ -165,15 +142,14 @@ class _$TaskModelImpl implements _TaskModel {
 
   @override
   String toString() {
-    return 'TaskModel(id: $id, title: $title, description: $description, status: $status)';
+    return 'TaskCreateDto(title: $title, description: $description, status: $status)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$TaskModelImpl &&
-            (identical(other.id, id) || other.id == id) &&
+            other is _$TaskCreateDtoImpl &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.description, description) ||
                 other.description == description) &&
@@ -182,36 +158,33 @@ class _$TaskModelImpl implements _TaskModel {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, title, description, status);
+  int get hashCode => Object.hash(runtimeType, title, description, status);
 
-  /// Create a copy of TaskModel
+  /// Create a copy of TaskCreateDto
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$TaskModelImplCopyWith<_$TaskModelImpl> get copyWith =>
-      __$$TaskModelImplCopyWithImpl<_$TaskModelImpl>(this, _$identity);
+  _$$TaskCreateDtoImplCopyWith<_$TaskCreateDtoImpl> get copyWith =>
+      __$$TaskCreateDtoImplCopyWithImpl<_$TaskCreateDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$TaskModelImplToJson(
+    return _$$TaskCreateDtoImplToJson(
       this,
     );
   }
 }
 
-abstract class _TaskModel implements TaskModel {
-  const factory _TaskModel(
-      {required final String id,
-      required final String title,
+abstract class _TaskCreateDto implements TaskCreateDto {
+  const factory _TaskCreateDto(
+      {required final String title,
       final String? description,
-      required final TaskCompleteStatus status}) = _$TaskModelImpl;
+      required final TaskCompleteStatus status}) = _$TaskCreateDtoImpl;
 
-  factory _TaskModel.fromJson(Map<String, dynamic> json) =
-      _$TaskModelImpl.fromJson;
+  factory _TaskCreateDto.fromJson(Map<String, dynamic> json) =
+      _$TaskCreateDtoImpl.fromJson;
 
-  @override
-  String get id;
   @override
   String get title;
   @override
@@ -219,10 +192,10 @@ abstract class _TaskModel implements TaskModel {
   @override
   TaskCompleteStatus get status;
 
-  /// Create a copy of TaskModel
+  /// Create a copy of TaskCreateDto
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$TaskModelImplCopyWith<_$TaskModelImpl> get copyWith =>
+  _$$TaskCreateDtoImplCopyWith<_$TaskCreateDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

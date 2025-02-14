@@ -1,7 +1,8 @@
 import 'dart:async';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:pondo_flutter_intro/feature/task/data/dto/task_create_dto.dart';
+import 'package:pondo_flutter_intro/feature/task/model/task_complete_status.dart';
 import 'package:pondo_flutter_intro/feature/task/model/task_model.dart';
-import 'package:uuid/uuid.dart';
 
 class TasksRepository {
   final DatabaseReference _tasksRef = FirebaseDatabase.instance.ref().child('tasks');
@@ -14,6 +15,7 @@ class TasksRepository {
           final data = Map<dynamic, dynamic>.from(snapshot.value as Map);
           return data.entries.map((e) {
             final valueMap = Map<String, dynamic>.from(e.value as Map);
+            valueMap.putIfAbsent('id', () => '${e.key}');
             return TaskModel.fromJson(valueMap);
           }).toList();
         } else {
@@ -30,15 +32,25 @@ class TasksRepository {
     required String title,
     String? description,
   }) async {
-    final task = TaskModel(
-      id: Uuid().v4(),
+    final dto = TaskCreateDto(
       title: title,
       description: description,
-      status: CompleteStatus.pending,
+      status: TaskCompleteStatus.pending,
     );
 
     try {
-      await _tasksRef.push().set(task.toJson());
+      await _tasksRef.push().set(dto.toJson());
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  Future<void> updateTaskStatus({
+    required String taskId,
+    required TaskCompleteStatus status,
+  }) async {
+    try {
+      await _tasksRef.child(taskId).update({'status': status.index});
     } catch (e) {
       print(e);
     }

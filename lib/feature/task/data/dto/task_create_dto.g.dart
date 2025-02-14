@@ -1,22 +1,20 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'task_model.dart';
+part of 'task_create_dto.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$TaskModelImpl _$$TaskModelImplFromJson(Map<String, dynamic> json) =>
-    _$TaskModelImpl(
-      id: json['id'] as String,
+_$TaskCreateDtoImpl _$$TaskCreateDtoImplFromJson(Map<String, dynamic> json) =>
+    _$TaskCreateDtoImpl(
       title: json['title'] as String,
       description: json['description'] as String?,
       status: $enumDecode(_$TaskCompleteStatusEnumMap, json['status']),
     );
 
-Map<String, dynamic> _$$TaskModelImplToJson(_$TaskModelImpl instance) =>
+Map<String, dynamic> _$$TaskCreateDtoImplToJson(_$TaskCreateDtoImpl instance) =>
     <String, dynamic>{
-      'id': instance.id,
       'title': instance.title,
       'description': instance.description,
       'status': _$TaskCompleteStatusEnumMap[instance.status]!,

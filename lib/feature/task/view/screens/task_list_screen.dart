@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pondo_flutter_intro/feature/auth/provider/auth_provider.dart';
-import 'package:pondo_flutter_intro/feature/task/model/task_model.dart';
 import 'package:pondo_flutter_intro/feature/task/provider/task_list_provider.dart';
+import 'package:pondo_flutter_intro/feature/task/view/widgets/task_list_tile.dart';
 
 class TaskListScreen extends StatelessWidget {
   const TaskListScreen({super.key});
@@ -26,13 +26,8 @@ class TaskListScreen extends StatelessWidget {
       ),
       body: ListView.builder(
         itemCount: tasks.length,
-        itemBuilder: (context, index) => ListTile(
-          title: ListTile(
-            title: Text(tasks[index].title),
-            subtitle: Text(tasks[index].description ?? ''),
-            trailing:
-                tasks[index].status == CompleteStatus.completed ? const Icon(Icons.check) : const Icon(Icons.close),
-          ),
+        itemBuilder: (context, index) => TaskListTile(
+          task: tasks[index],
         ),
       ),
     );

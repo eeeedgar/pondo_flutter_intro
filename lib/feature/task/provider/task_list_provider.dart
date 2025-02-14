@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:pondo_flutter_intro/feature/task/data/task_repository.dart';
+import 'package:pondo_flutter_intro/feature/task/model/task_complete_status.dart';
 import 'package:pondo_flutter_intro/feature/task/model/task_model.dart';
 
 class TasksProvider extends StatefulWidget {
@@ -26,9 +27,14 @@ class _TasksProviderState extends State<TasksProvider> {
   Future<void> createTask({
     required String title,
     String? description,
-  }) async {
-    await _tasksRepository.createTask(title: title, description: description);
-  }
+  }) async =>
+      await _tasksRepository.createTask(title: title, description: description);
+
+  Future<void> updateTaskStatus({
+    required String taskId,
+    required TaskCompleteStatus status,
+  }) async =>
+      await _tasksRepository.updateTaskStatus(taskId: taskId, status: status);
 
   @override
   void initState() {
