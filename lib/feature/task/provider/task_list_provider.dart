@@ -7,7 +7,13 @@ import 'package:pondo_flutter_intro/feature/task/model/task_model.dart';
 
 class TasksProvider extends StatefulWidget {
   final Widget child;
-  const TasksProvider({super.key, required this.child});
+  final TasksRepository _tasksRepository;
+
+  const TasksProvider({
+    super.key,
+    required TasksRepository tasksRepository,
+    required this.child,
+  }) : _tasksRepository = tasksRepository;
 
   static _TasksProviderState of(BuildContext context) {
     final inherited = context.dependOnInheritedWidgetOfExactType<_TasksInheritedWidget>();
@@ -21,25 +27,24 @@ class TasksProvider extends StatefulWidget {
 
 class _TasksProviderState extends State<TasksProvider> {
   List<TaskModel> tasks = [];
-  final TasksRepository _tasksRepository = TasksRepository();
   late final StreamSubscription<List<TaskModel>> _subscription;
 
   Future<void> createTask({
     required String title,
     String? description,
   }) async =>
-      await _tasksRepository.createTask(title: title, description: description);
+      await widget._tasksRepository.createTask(title: title, description: description);
 
   Future<void> updateTaskStatus({
     required String taskId,
     required TaskCompleteStatus status,
   }) async =>
-      await _tasksRepository.updateTaskStatus(taskId: taskId, status: status);
+      await widget._tasksRepository.updateTaskStatus(taskId: taskId, status: status);
 
   @override
   void initState() {
     super.initState();
-    _subscription = _tasksRepository.tasksStream.listen((newTasks) {
+    _subscription = widget._tasksRepository.tasksStream.listen((newTasks) {
       tasks = newTasks;
       setState(() {});
     });

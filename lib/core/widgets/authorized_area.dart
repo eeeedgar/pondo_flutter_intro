@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pondo_flutter_intro/feature/task/data/task_repository_impl.dart';
 import 'package:pondo_flutter_intro/feature/task/provider/task_list_provider.dart';
 import 'package:pondo_flutter_intro/feature/task/view/screens/task_create_screen.dart';
 import 'package:pondo_flutter_intro/feature/task/view/screens/task_list_screen.dart';
@@ -11,6 +12,7 @@ class AuthorizedArea extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TasksProvider(
+      tasksRepository: TasksRepositoryImpl(),
       child: Navigator(
         initialRoute: '/',
         onGenerateRoute: (RouteSettings settings) {
