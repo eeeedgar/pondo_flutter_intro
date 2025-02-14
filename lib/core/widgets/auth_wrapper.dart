@@ -10,5 +10,5 @@ class AuthWrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) =>
-      AuthProvider.of(context).isAuthorized ? const AuthorizedArea() : const AuthSignInAnonymousScreen();
+      AuthorirazionProvider.of(context).isAuthorized ? const AuthorizedArea() : const AuthSignInAnonymousScreen();
 }

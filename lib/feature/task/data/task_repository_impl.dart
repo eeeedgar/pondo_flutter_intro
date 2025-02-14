@@ -6,7 +6,11 @@ import 'package:pondo_flutter_intro/feature/task/model/task_complete_status.dart
 import 'package:pondo_flutter_intro/feature/task/model/task_model.dart';
 
 class TasksRepositoryImpl implements TasksRepository {
-  final DatabaseReference _tasksRef = FirebaseDatabase.instance.ref().child('tasks');
+  final DatabaseReference _tasksRef;
+
+  TasksRepositoryImpl({
+    required DatabaseReference tasksRef,
+  }) : _tasksRef = tasksRef;
 
   @override
   Stream<List<TaskModel>> get tasksStream {

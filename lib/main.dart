@@ -1,9 +1,13 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
 import 'package:firebase_core/firebase_core.dart';
+import 'package:pondo_flutter_intro/di/app_dependencies.dart';
 import 'package:pondo_flutter_intro/feature/auth/data/auth_repository_impl.dart';
 import 'package:pondo_flutter_intro/feature/auth/provider/auth_provider.dart';
 import 'package:pondo_flutter_intro/core/widgets/auth_wrapper.dart';
+import 'package:pondo_flutter_intro/feature/task/data/task_repository_impl.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -11,7 +15,17 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const MainApp());
+  runApp(
+    AppDependencies(
+      authRepository: AuthRepositoryImpl(
+        firebaseAuth: FirebaseAuth.instance,
+      ),
+      tasksRepository: TasksRepositoryImpl(
+        tasksRef: FirebaseDatabase.instance.ref().child('tasks'),
+      ),
+      child: const MainApp(),
+    ),
+  );
 }
 
 class MainApp extends StatefulWidget {
@@ -24,8 +38,8 @@ class MainApp extends StatefulWidget {
 class _MainAppState extends State<MainApp> {
   @override
   Widget build(BuildContext context) {
-    return AuthProvider(
-      authRepository: AuthRepositoryImpl(),
+    return AuthorirazionProvider(
+      authRepository: AppDependencies.of(context).authRepository,
       child: MaterialApp(
         home: AuthWrapper(),
       ),

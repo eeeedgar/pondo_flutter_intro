@@ -16,7 +16,7 @@ class TaskListScreen extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.logout),
-            onPressed: () => AuthProvider.of(context).logout(context),
+            onPressed: () => AuthorirazionProvider.of(context).logout(context),
           ),
         ],
       ),

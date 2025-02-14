@@ -4,27 +4,27 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:pondo_flutter_intro/feature/auth/data/auth_repository.dart';
 
-class AuthProvider extends StatefulWidget {
+class AuthorirazionProvider extends StatefulWidget {
   final AuthRepository _authRepository;
   final Widget child;
 
-  const AuthProvider({
+  const AuthorirazionProvider({
     super.key,
     required this.child,
     required AuthRepository authRepository,
   }) : _authRepository = authRepository;
 
-  static _AuthProviderState of(BuildContext context) {
+  static _AuthorirazionProviderState of(BuildContext context) {
     final _AuthInheritedWidget? inherited = context.dependOnInheritedWidgetOfExactType<_AuthInheritedWidget>();
     assert(inherited != null, 'No AuthProvider found in context');
     return inherited!.data;
   }
 
   @override
-  _AuthProviderState createState() => _AuthProviderState();
+  _AuthorirazionProviderState createState() => _AuthorirazionProviderState();
 }
 
-class _AuthProviderState extends State<AuthProvider> {
+class _AuthorirazionProviderState extends State<AuthorirazionProvider> {
   late final StreamSubscription<bool?> _authSubscription;
   late bool _isAuthorized;
 
@@ -77,7 +77,7 @@ class _AuthProviderState extends State<AuthProvider> {
 }
 
 class _AuthInheritedWidget extends InheritedWidget {
-  final _AuthProviderState data;
+  final _AuthorirazionProviderState data;
 
   const _AuthInheritedWidget({
     required super.child,

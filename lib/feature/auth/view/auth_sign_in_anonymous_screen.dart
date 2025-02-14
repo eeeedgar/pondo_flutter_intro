@@ -6,7 +6,7 @@ class AuthSignInAnonymousScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final auth = AuthProvider.of(context);
+    final auth = AuthorirazionProvider.of(context);
     return Scaffold(
       appBar: AppBar(title: const Text('Sign In')),
       body: Center(
