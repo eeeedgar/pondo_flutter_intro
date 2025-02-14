@@ -5,6 +5,8 @@ import 'package:pondo_flutter_intro/feature/task/data/task_repository.dart';
 import 'package:pondo_flutter_intro/feature/task/model/task_complete_status.dart';
 import 'package:pondo_flutter_intro/feature/task/model/task_model.dart';
 
+enum TaskFilter { all, completed, pending }
+
 class TasksProvider extends StatefulWidget {
   final Widget child;
   final TasksRepository _tasksRepository;
@@ -29,6 +31,27 @@ class _TasksProviderState extends State<TasksProvider> {
   List<TaskModel> tasks = [];
   late final StreamSubscription<List<TaskModel>> _subscription;
 
+  TaskFilter _filter = TaskFilter.all;
+
+  TaskFilter get filter => _filter;
+
+  void setFilter(TaskFilter newFilter) {
+    setState(() {
+      _filter = newFilter;
+    });
+  }
+
+  List<TaskModel> get filteredTasks {
+    switch (_filter) {
+      case TaskFilter.completed:
+        return tasks.where((task) => task.status == TaskCompleteStatus.completed).toList();
+      case TaskFilter.pending:
+        return tasks.where((task) => task.status == TaskCompleteStatus.pending).toList();
+      case TaskFilter.all:
+        return tasks;
+    }
+  }
+
   Future<void> createTask({
     required String title,
     String? description,
@@ -45,8 +68,9 @@ class _TasksProviderState extends State<TasksProvider> {
   void initState() {
     super.initState();
     _subscription = widget._tasksRepository.tasksStream.listen((newTasks) {
-      tasks = newTasks;
-      setState(() {});
+      setState(() {
+        tasks = newTasks;
+      });
     });
   }
 

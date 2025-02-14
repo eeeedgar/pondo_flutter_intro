@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pondo_flutter_intro/core/theme/widgets/custom_app_bar.dart';
 import 'package:pondo_flutter_intro/feature/task/provider/task_list_provider.dart';
 
 class TaskCreateScreen extends StatefulWidget {
@@ -16,14 +17,13 @@ class _TaskCreateScreenState extends State<TaskCreateScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Create Task')),
+      appBar: CustomAppBar(title: 'Create Task'),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Form(
           key: _formKey,
           child: Column(
             children: [
-              // Поле для ввода заголовка (обязательное)
               TextFormField(
                 controller: _titleController,
                 decoration: const InputDecoration(
