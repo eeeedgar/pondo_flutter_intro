@@ -38,6 +38,16 @@ class _AuthProviderState extends State<AuthProvider> {
     }
   }
 
+  Future<void> logout(BuildContext context) async {
+    try {
+      await _authRepository.logout();
+    } on FirebaseAuthException catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Error: ${e.message}")),
+      );
+    }
+  }
+
   @override
   void initState() {
     super.initState();

@@ -14,7 +14,7 @@ enum CompleteStatus {
 @freezed
 class TaskModel with _$TaskModel {
   const factory TaskModel({
-    required int id,
+    required String id,
     required String title,
     String? description,
     required CompleteStatus status,

@@ -23,6 +23,13 @@ class _TasksProviderState extends State<TasksProvider> {
   final TasksRepository _tasksRepository = TasksRepository();
   late final StreamSubscription<List<TaskModel>> _subscription;
 
+  Future<void> createTask({
+    required String title,
+    String? description,
+  }) async {
+    await _tasksRepository.createTask(title: title, description: description);
+  }
+
   @override
   void initState() {
     super.initState();

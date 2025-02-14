@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:pondo_flutter_intro/feature/task/model/task_model.dart';
+import 'package:uuid/uuid.dart';
 
 class TasksRepository {
   final DatabaseReference _tasksRef = FirebaseDatabase.instance.ref().child('tasks');
@@ -22,6 +23,24 @@ class TasksRepository {
     } catch (e) {
       print(e);
       return Stream.empty();
+    }
+  }
+
+  Future<void> createTask({
+    required String title,
+    String? description,
+  }) async {
+    final task = TaskModel(
+      id: Uuid().v4(),
+      title: title,
+      description: description,
+      status: CompleteStatus.pending,
+    );
+
+    try {
+      await _tasksRef.push().set(task.toJson());
+    } catch (e) {
+      print(e);
     }
   }
 }

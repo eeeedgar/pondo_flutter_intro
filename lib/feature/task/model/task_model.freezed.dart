@@ -20,7 +20,7 @@ TaskModel _$TaskModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$TaskModel {
-  int get id => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
   CompleteStatus get status => throw _privateConstructorUsedError;
@@ -40,7 +40,8 @@ abstract class $TaskModelCopyWith<$Res> {
   factory $TaskModelCopyWith(TaskModel value, $Res Function(TaskModel) then) =
       _$TaskModelCopyWithImpl<$Res, TaskModel>;
   @useResult
-  $Res call({int id, String title, String? description, CompleteStatus status});
+  $Res call(
+      {String id, String title, String? description, CompleteStatus status});
 }
 
 /// @nodoc
@@ -67,7 +68,7 @@ class _$TaskModelCopyWithImpl<$Res, $Val extends TaskModel>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -92,7 +93,8 @@ abstract class _$$TaskModelImplCopyWith<$Res>
       __$$TaskModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String title, String? description, CompleteStatus status});
+  $Res call(
+      {String id, String title, String? description, CompleteStatus status});
 }
 
 /// @nodoc
@@ -117,7 +119,7 @@ class __$$TaskModelImplCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -147,7 +149,7 @@ class _$TaskModelImpl implements _TaskModel {
       _$$TaskModelImplFromJson(json);
 
   @override
-  final int id;
+  final String id;
   @override
   final String title;
   @override
@@ -194,7 +196,7 @@ class _$TaskModelImpl implements _TaskModel {
 
 abstract class _TaskModel implements TaskModel {
   const factory _TaskModel(
-      {required final int id,
+      {required final String id,
       required final String title,
       final String? description,
       required final CompleteStatus status}) = _$TaskModelImpl;
@@ -203,7 +205,7 @@ abstract class _TaskModel implements TaskModel {
       _$TaskModelImpl.fromJson;
 
   @override
-  int get id;
+  String get id;
   @override
   String get title;
   @override

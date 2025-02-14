@@ -8,7 +8,7 @@ part of 'task_model.dart';
 
 _$TaskModelImpl _$$TaskModelImplFromJson(Map<String, dynamic> json) =>
     _$TaskModelImpl(
-      id: (json['id'] as num).toInt(),
+      id: json['id'] as String,
       title: json['title'] as String,
       description: json['description'] as String?,
       status: $enumDecode(_$CompleteStatusEnumMap, json['status']),

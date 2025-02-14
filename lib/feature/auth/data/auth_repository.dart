@@ -9,7 +9,7 @@ class AuthRepository {
 
   bool get isAuthorized => _firebaseAuth.currentUser != null;
 
-  Future<UserCredential> signInAnonymously() {
-    return _firebaseAuth.signInAnonymously();
-  }
+  Future<UserCredential> signInAnonymously() => _firebaseAuth.signInAnonymously();
+
+  Future<void> logout() => _firebaseAuth.signOut();
 }
