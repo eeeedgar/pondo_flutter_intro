@@ -9,14 +9,20 @@ class TaskListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final tasksProvider = TasksProvider.of(context);
-    final tasks = tasksProvider.tasks;
+    final tasks = tasksProvider.filteredTasks;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Task list'),
         actions: [
           IconButton(
+            icon: Icon(
+              tasksProvider.filter == TaskFilter.all ? Icons.filter_alt : Icons.filter_alt_outlined,
+            ),
+            onPressed: () => _onFilterPressed(context),
+          ),
+          IconButton(
             icon: const Icon(Icons.logout),
-            onPressed: () => AuthorirazionProvider.of(context).logout(context),
+            onPressed: () => _onLogoutPressed(context),
           ),
         ],
       ),
@@ -34,4 +40,13 @@ class TaskListScreen extends StatelessWidget {
   }
 
   void _onFabPressed(BuildContext context) => Navigator.of(context).pushNamed('/create');
+
+  void _onLogoutPressed(BuildContext context) => AuthorirazionProvider.of(context).logout(context);
+
+  void _onFilterPressed(BuildContext context) {
+    final tasksProvider = TasksProvider.of(context);
+    final filter = tasksProvider.filter;
+    final newFilter = filter == TaskFilter.all ? TaskFilter.pending : TaskFilter.all;
+    tasksProvider.setFilter(newFilter);
+  }
 }
