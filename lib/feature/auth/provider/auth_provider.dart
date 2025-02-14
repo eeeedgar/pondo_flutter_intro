@@ -5,11 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:pondo_flutter_intro/feature/auth/data/auth_repository.dart';
 
 class AuthProvider extends StatefulWidget {
+  final AuthRepository _authRepository;
   final Widget child;
+
   const AuthProvider({
     super.key,
     required this.child,
-  });
+    required AuthRepository authRepository,
+  }) : _authRepository = authRepository;
 
   static _AuthProviderState of(BuildContext context) {
     final _AuthInheritedWidget? inherited = context.dependOnInheritedWidgetOfExactType<_AuthInheritedWidget>();
@@ -22,7 +25,6 @@ class AuthProvider extends StatefulWidget {
 }
 
 class _AuthProviderState extends State<AuthProvider> {
-  final AuthRepository _authRepository = AuthRepository();
   late final StreamSubscription<bool?> _authSubscription;
   late bool _isAuthorized;
 
@@ -30,7 +32,7 @@ class _AuthProviderState extends State<AuthProvider> {
 
   Future<void> signInAnonymously(BuildContext context) async {
     try {
-      await _authRepository.signInAnonymously();
+      await widget._authRepository.signInAnonymously();
     } on FirebaseAuthException catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text("Error: ${e.message}")),
@@ -40,7 +42,7 @@ class _AuthProviderState extends State<AuthProvider> {
 
   Future<void> logout(BuildContext context) async {
     try {
-      await _authRepository.logout();
+      await widget._authRepository.logout();
     } on FirebaseAuthException catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text("Error: ${e.message}")),
@@ -51,8 +53,8 @@ class _AuthProviderState extends State<AuthProvider> {
   @override
   void initState() {
     super.initState();
-    _isAuthorized = _authRepository.isAuthorized;
-    _authSubscription = _authRepository.authStateChanges.listen((isAuthorized) {
+    _isAuthorized = widget._authRepository.isAuthorized;
+    _authSubscription = widget._authRepository.authStateChanges.listen((isAuthorized) {
       setState(() {
         _isAuthorized = isAuthorized;
       });

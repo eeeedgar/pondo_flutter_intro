@@ -2,14 +2,12 @@ import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
 
-class AuthRepository {
-  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+abstract class AuthRepository {
+  Stream<bool> get authStateChanges;
 
-  Stream<bool> get authStateChanges => _firebaseAuth.authStateChanges().map((user) => user != null);
+  bool get isAuthorized;
 
-  bool get isAuthorized => _firebaseAuth.currentUser != null;
+  Future<UserCredential> signInAnonymously();
 
-  Future<UserCredential> signInAnonymously() => _firebaseAuth.signInAnonymously();
-
-  Future<void> logout() => _firebaseAuth.signOut();
+  Future<void> logout();
 }

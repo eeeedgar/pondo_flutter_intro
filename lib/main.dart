@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:firebase_core/firebase_core.dart';
+import 'package:pondo_flutter_intro/feature/auth/data/auth_repository_impl.dart';
 import 'package:pondo_flutter_intro/feature/auth/provider/auth_provider.dart';
 import 'package:pondo_flutter_intro/core/widgets/auth_wrapper.dart';
 import 'firebase_options.dart';
@@ -24,6 +25,7 @@ class _MainAppState extends State<MainApp> {
   @override
   Widget build(BuildContext context) {
     return AuthProvider(
+      authRepository: AuthRepositoryImpl(),
       child: MaterialApp(
         home: AuthWrapper(),
       ),
